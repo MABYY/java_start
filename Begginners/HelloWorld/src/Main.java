@@ -194,7 +194,7 @@ public class Main {
         // Reading Input:
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("You are? ");
+        System.out.print("How old are you? ");
         byte agee = scanner.nextByte() ;
         System.out.println("You are " + agee);
 
@@ -228,6 +228,7 @@ public class Main {
         }
 
         /// *** FizzBuzz *** ///
+        System.out.println("Input an integer: ");
 
         Scanner scanner3 = new Scanner(System.in);
         int newInput = scanner3.nextInt();
@@ -244,6 +245,66 @@ public class Main {
             System.out.println("The number is NOT a multiple of 2 nor 3");
 
 
+        // For loops
+
+        for (int i = 1 ; i < 5 ; i++) {
+            System.out.println("Number: " + i);
+        }
+
+        for (int i = 10 ; i < 5 ; i--) {
+            System.out.println("Number reverse: " + i);
+        }
+
+
+        // While loops
+
+        int num = 10;
+        while (num > 1) {
+            System.out.println("Number while: " + num);
+            num--;
+        }
+
+        Scanner scanner34 = new Scanner(System.in);
+        String newString = "";
+
+        while (!newString.equals("quit")) {
+            System.out.println("Enter new word (ref: quit) ");
+            newString = scanner34.next().toLowerCase();
+        }
+
+        Scanner scanner4 = new Scanner(System.in);
+        int newInput2 = 0;
+
+        while (true) {
+            System.out.println("Input new integer ");
+            newInput2 = scanner4.nextInt();
+            if(newInput2 > 10) {
+                System.out.println("Integer must be higher than ten....");
+                continue;
+            }
+            else
+                break;
+
+        }
+
+        // For each: iterate through a collection
+
+        String [] fruits = {"Grapes", "Watermelon", "Apple"};
+
+        for(int i = 0 ; i< fruits.length; i++){
+            System.out.println(fruits[i]);
+        }
+
+        for(int i = fruits.length  ; i >= 0; i--){
+            System.out.println(fruits[i]);
+        }
+
+        for (String f: fruits) {
+            System.out.println(f);
+        }
+
+
+
 
 
 
@@ -256,20 +317,50 @@ public class Main {
         final byte MONTHS = 12;
         final byte PERCENT = 100;
 
+        int principal = 0;
+        float annualRate = 0;
+        int totalYears = 0;
+
         Scanner scannerMC = new Scanner(System.in);
 
-        System.out.print("Enter principal amount (USD): " );
-        int principal = scannerMC.nextInt();
+        while (true) {
+            System.out.print("Enter principal amount (USD 1K : - 1MM): " );
+            principal = scannerMC.nextInt();
 
-        System.out.print("Enter annual interest rate: ");
-        float annualRate = scannerMC.nextFloat();
+            if(principal >= 1000 && principal <= 100_000_000)
+                break;
+        }
+
+
+        while (true) {
+            System.out.print("Enter annual interest rate: ");
+            annualRate = scannerMC.nextFloat();
+
+            if(annualRate >= 1 && annualRate <= 30) {
+                break;
+            } else {
+                System.out.print("Enter a value between 1 and 30: ");
+            }
+        }
 
         // Calculate monthly rate
 
         float monthlyRate = annualRate / PERCENT / MONTHS ;
 
-        System.out.print("Number of years: ");
-        int totalYears = scannerMC.nextByte();
+
+
+        while (true) {
+            System.out.print("Number of years: ");
+            totalYears = scannerMC.nextByte();
+
+            if(totalYears >= 1 && totalYears <= 30) {
+                break;
+            } else {
+                System.out.print("Enter a value between 1 and 30");
+            }
+        }
+
+
         int numberOfPayments = totalYears * MONTHS ;
 
         double mortgage = principal * (monthlyRate * Math.pow(1+monthlyRate,numberOfPayments))/ (Math.pow(1+monthlyRate,numberOfPayments) -1);
