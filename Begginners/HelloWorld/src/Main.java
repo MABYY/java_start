@@ -1,6 +1,8 @@
 import java.awt.*;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
 
@@ -96,7 +98,7 @@ public class Main {
         numbers[1] = 1;
         numbers[2] = 4;
         numbers[3] = 6;
-        System.out.println(numbers); // get teh reference in momory
+        System.out.println(numbers); // get teh reference in memory
         System.out.println(Arrays.toString(numbers));  // string representation
 
 
@@ -176,7 +178,122 @@ public class Main {
         int randomInt = (int) Math.round(Math.random() *100);
         System.out.println(randomInt);
 
+
+
         // Formatting Numbers
+        // Abstract classes: can't instantiate them
+
+        NumberFormat crncy =  NumberFormat.getCurrencyInstance();
+        String resultCurncy = crncy.format(123456.78901);
+        System.out.println(resultCurncy);
+
+        NumberFormat pcnt =  NumberFormat.getPercentInstance();
+        String resultpcnt = pcnt.format(0.157);
+        System.out.println(resultpcnt);
+
+        // Reading Input:
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("You are? ");
+        byte agee = scanner.nextByte() ;
+        System.out.println("You are " + agee);
+
+
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.print("Name? ");
+        String name = scanner1.nextLine().trim();
+        System.out.println("You are " + name);
+
+
+        // Simplifying If Statements
+
+        int income = 120_000;
+        boolean elegible = (income > 100_000) ? true : false;
+        System.out.println("Are you elegible? " + elegible);
+
+
+        // Switch Statements
+
+        String role = "admin";
+
+        switch (role) {
+            case "principal":
+                System.out.println("You are a principal");
+                break;
+            case "admin":
+                System.out.println("You are an admin");
+                break;
+            default:
+                System.out.println("You are a guest");
+        }
+
+        /// *** FizzBuzz *** ///
+
+        Scanner scanner3 = new Scanner(System.in);
+        int newInput = scanner3.nextInt();
+
+        if (newInput % 3 == 0) {
+            if (newInput % 2 == 0) {
+                System.out.println("The number is a multiple of 6");
+            } else {
+                System.out.println("The number is a multiple of 3");
+            }
+        } else if (newInput % 2 == 0) {
+            System.out.println("The number is a multiple of 2");
+        } else
+            System.out.println("The number is NOT a multiple of 2 nor 3");
+
+
+
+
+
+
+
+
+
+        /// **** Mortgage Calculator **** /////
+
+        final byte MONTHS = 12;
+        final byte PERCENT = 100;
+
+        Scanner scannerMC = new Scanner(System.in);
+
+        System.out.print("Enter principal amount (USD): " );
+        int principal = scannerMC.nextInt();
+
+        System.out.print("Enter annual interest rate: ");
+        float annualRate = scannerMC.nextFloat();
+
+        // Calculate monthly rate
+
+        float monthlyRate = annualRate / PERCENT / MONTHS ;
+
+        System.out.print("Number of years: ");
+        int totalYears = scannerMC.nextByte();
+        int numberOfPayments = totalYears * MONTHS ;
+
+        double mortgage = principal * (monthlyRate * Math.pow(1+monthlyRate,numberOfPayments))/ (Math.pow(1+monthlyRate,numberOfPayments) -1);
+        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
+
+        System.out.print("Your mortgage estimate is: " + mortgageFormatted);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
