@@ -139,6 +139,44 @@ public class Main {
         System.out.println(xx);
         System.out.println(yy);
 
+        // Implicit casting
+        // byte >> short >> int >> long >> float >> double
+        short xxx = 1 ;
+        double yyy = xxx + 1.1;
+        System.out.println(xxx);
+        System.out.println(yyy);
+
+        // Explicit casting
+        // byte >> short >> int >> long >> float >> double
+        double m = 1.8;
+        int n = (int) m + 5;
+        System.out.println(m);
+        System.out.println(n);
+
+        String mm = "1.8";
+        double nn =  Double.parseDouble(mm)  + 5;
+        System.out.println(mm);
+        System.out.println(nn);
+
+        // The Math Class
+
+        // Reading an input
+        int result2 = (int)Math.ceil(1.1F);
+        System.out.println(result2);
+
+        int result3 = Math.max(1,2);
+        System.out.println(result3);
+
+        double random1 = Math.random() *100 ;
+        System.out.println(random1);
+
+        double randomDouble = Math.round(Math.random() *100);
+        System.out.println(randomDouble);
+
+        int randomInt = (int) Math.round(Math.random() *100);
+        System.out.println(randomInt);
+
+        // Formatting Numbers
 
 
 
